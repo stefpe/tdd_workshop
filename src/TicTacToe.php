@@ -91,8 +91,8 @@ final class TicTacToe
     {
         foreach ($this->board as $row) {
             $values = [];
-            foreach ($row as $col){
-                if ($col !== null){
+            foreach ($row as $col) {
+                if ($col !== null) {
                     $values[$col]++;
                 }
             }
@@ -111,7 +111,7 @@ final class TicTacToe
         for ($col = 0; $col <= self::NUM_COLS; $col++) {
             $values = [];
             for ($row = 0; $row <= self::NUM_ROWS; $row++) {
-                if ($this->board[$row][$col] !== null){
+                if ($this->board[$row][$col] !== null) {
                     $values[$this->board[$row][$col]]++;
                 }
             }
@@ -130,18 +130,19 @@ final class TicTacToe
     {
         $basicDiagonal = [];
         $otherDiagonal = [];
-        for ($row = 0; $row <= self::NUM_COLS; $row++) {
-            if ($this->board[$row][$row] !== null){
+        for ($row = 0; $row <= self::NUM_ROWS; $row++) {
+            if ($this->board[$row][$row] !== null) {
                 $basicDiagonal[$this->board[$row][$row]]++;
             }
 
-//            $otherValue = $this->board[$row][count($this->board[$row]) - 1 - $row];
-//
-//            if ($otherValue!== null){
-//                $otherDiagonal[$otherValue]++;
-//            }
+
+            $otherValue = $this->board[$row][self::NUM_ROWS - 1 - $row];
+
+            if ($otherValue !== null) {
+                $otherDiagonal[$otherValue]++;
+            }
         }
 
-        return in_array(3, $basicDiagonal)|| in_array(3, $otherDiagonal);
+        return in_array(3, $basicDiagonal) || in_array(3, $otherDiagonal);
     }
 }

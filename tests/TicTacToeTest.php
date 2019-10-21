@@ -58,14 +58,26 @@ class TicTacToeTest extends TestCase
         $this->assertTrue($this->game->addSign('X', 0, 2));
         $this->assertTrue($this->game->isFinished());
     }
-//
-//    public function testWinOtherDiagonal()
-//    {
-//        $this->game = new TicTacToe();
-//        $this->game->start();
-//        $this->game->addSign('X', 0, 2);
-//        $this->game->addSign('X', 1, 1);
-//        $this->game->addSign('X', 2, 0);
-//        $this->assertTrue($this->game->isFinished());
-//    }
+
+    public function testWinDiagonal()
+    {
+        $this->assertTrue($this->game->addSign('X', 0, 0));
+        $this->assertTrue($this->game->addSign('O', 0, 1));
+        $this->assertTrue($this->game->addSign('X', 1, 1));
+        $this->assertTrue($this->game->addSign('O', 1, 2));
+        $this->assertTrue($this->game->addSign('X', 2, 2));
+        $this->assertTrue($this->game->isFinished());
+    }
+
+    public function testWinOtherDiagonal()
+    {
+        $this->game = new TicTacToe();
+        $this->game->start();
+        $this->game->addSign('X', 0, 2);
+        $this->assertTrue($this->game->addSign('O', 0, 1));
+        $this->game->addSign('X', 1, 1);
+        $this->assertTrue($this->game->addSign('O', 1, 2));
+        $this->game->addSign('X', 2, 0);
+        $this->assertTrue($this->game->isFinished());
+    }
 }
